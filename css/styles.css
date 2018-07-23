@@ -1,0 +1,89 @@
+body{
+    /* overflow: hidden; */
+}
+
+.header {
+    border: 0;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.min-full-height{
+    min-height: calc(100vh - 201px);
+}
+
+.visit-idevia{
+    top: 0;
+    right: 48px;
+    padding: 15px 53px;
+    color: white;
+}
+
+.btn-visit{
+    background-color: #fc6e51;
+}
+
+.bg-backgrd{
+    background-color: #212331;
+}
+
+.text-icon1{
+    color: #fc6e51;
+}
+
+.alert-track{
+    background-color: #212331;
+    color: #fc6e51;
+    border-radius: 0;
+}
+
+.price1{
+    color: white;
+}
+
+.footer {
+    /* position: absolute; */
+    color: black;
+    /* bottom: 0; */
+    width: 100%;
+    /* height: 60px; */
+}
+
+.idevia1{
+    color: #fc6e51
+}
+
+.component {
+    width: 25rem;
+    /* height: 15rem; */
+    margin: auto;
+}
+
+.card{
+    background-color: #f2f2f2;
+    border: 0;
+    padding: 50px 30px;
+}
+
+.input-group-append{
+    border: 0;
+}
+
+.form1{
+    border: 0;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+.btn-t{
+    background-color: white;
+    color: #212331;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.smaller-dropdown{
+    min-width: 3.5rem;
+}
+
+.progress-bar{
+    background-color: #fc6e51;
+}
