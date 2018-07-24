@@ -123,8 +123,8 @@ a:hover {
   box-shadow: none;
 }
 
-.glow:focus {
-  border-color:#ccc;
+.glow:focus,.page-link:focus {
+  border-color: transparent;
   outline: 0;
   -webkit-box-shadow: none;
   box-shadow: none;

@@ -32,13 +32,15 @@
     setInterval(getCurrentTime, 100);
 
 
-    $('.d-from').next().on('click', 'a', function(){
+    $('.d-from').next().on('click', 'a', function(e){
+        e.preventDefault();
         // $drop = $(this).next();
         $('.d-val1').html($(this).html());
         // console.log($(this).html())
     });
 
-    $('.d2-from').next().on('click', 'a', function () {
+    $('.d2-from').next().on('click', 'a', function (e) {
+        e.preventDefault();
         // $drop = $(this).next();
         $('.d-val2').html($(this).html());
         // console.log($(this).html())
@@ -57,7 +59,7 @@
     // });    
     var currentPrice = {};
     var socket = io.connect('https://streamer.cryptocompare.com/');
-    var subscription = ['5~CCCAGG~BTC~USD', '5~CCCAGG~ETH~USD', '5~CCCAGG~BCH~USD', '5~CCCAGG~LTE~USD', '5~CCCAGG~XRP~USD'];
+    var subscription = ['5~CCCAGG~BTC~USD', '5~CCCAGG~ETH~USD', '5~CCCAGG~BCH~USD', '5~CCCAGG~EOS~USD', '5~CCCAGG~XRP~USD'];
     socket.emit('SubAdd', { subs: subscription });
     socket.on("m", function (message) {
         // console.log(message);
@@ -140,8 +142,6 @@
         //     $('#CHANGE24HOURPCT_' + from).addClass("pct-down");
         // }
     };
-    countDown();
-    loadData();
 
     var coinchart =function(){
         var ctx = document.getElementById('myChart').getContext('2d');
