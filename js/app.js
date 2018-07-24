@@ -44,106 +44,101 @@
         // console.log($(this).html())
     });
 
-    $('.d3-from').next().on('click', 'a', function () {
-        // $drop = $(this).next();
-        $('.d-val3').html($(this).html());
-        // console.log($(this).html())
-    });
-
-    $.ajax({
-        url: 'https://free.currencyconverterapi.com/api/v6/currencies',
-        dataType: 'json',
-        contentType: 'application/json',
-        success: function (data) {
-            console.log(data);
-        },
-        error: function (err) {
-            console.error('FETCH ETH ERR:', err);
+    // $.ajax({
+    //     url: 'https://free.currencyconverterapi.com/api/v6/currencies',
+    //     dataType: 'json',
+    //     contentType: 'application/json',
+    //     success: function (data) {
+    //         console.log(data);
+    //     },
+    //     error: function (err) {
+    //         console.error('FETCH ETH ERR:', err);
+    //     }
+    // });    
+    var currentPrice = {};
+    var socket = io.connect('https://streamer.cryptocompare.com/');
+    var subscription = ['5~CCCAGG~BTC~USD', '5~CCCAGG~ETH~USD', '5~CCCAGG~BCH~USD', '5~CCCAGG~LTE~USD', '5~CCCAGG~XRP~USD'];
+    socket.emit('SubAdd', { subs: subscription });
+    socket.on("m", function (message) {
+        // console.log(message);
+        // 5~CCCAGG~ETH~USD~2~469.14~1532424825~0.4283~201.116831~272129418~175318.07318342157~81163092.97298582~379813.12854167004~174590756.52248168~449.63~477.85~448.32~464.78~479.13~445.58~Bitfinex~7ffe9
+        var messageType = message.substring(0, message.indexOf("~"));
+        if (messageType == CCC.STATIC.TYPE.CURRENTAGG) {
+            dataUnpack(message);
+        }
+        else if (messageType == CCC.STATIC.TYPE.FULLVOLUME) {
+            // decorateWithFullVolume(message);
         }
     });
- var loadData = function() {
 
-    // fetch BTC
-     $.ajax({
-         url: 'https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD',
-         dataType: 'json',
-         contentType: 'application/json',
-         success: function (data) {
-             $('.btc').html("$ " + data.USD);
-         },
-         error: function (err) {
-             console.error('FETCH ETH ERR:', err);
-         }
-     });
+            // dataUnpack(message);
+    var dataUnpack = function (message) {
+        var data = CCC.CURRENT.unpack(message);
+
+        var from = data['FROMSYMBOL'];
+        var to = data['TOSYMBOL'];
+        var fsym = CCC.STATIC.CURRENCY.getSymbol(from);
+        var tsym = CCC.STATIC.CURRENCY.getSymbol(to);
+        var pair = from + to;
+        if (!currentPrice.hasOwnProperty(pair)) {
+            currentPrice[pair] = {};
+        }
+        
+        for (var key in data) {
+            currentPrice[pair][key] = data[key];
+        }
+
+        if (currentPrice[pair]['LASTTRADEID']) {
+            currentPrice[pair]['LASTTRADEID'] = parseInt(currentPrice[pair]['LASTTRADEID']).toFixed(0);
+        }
+        currentPrice[pair]['CHANGE24HOUR'] = CCC.convertValueToDisplay(tsym, (currentPrice[pair]['PRICE'] - currentPrice[pair]['OPEN24HOUR']));
+        currentPrice[pair]['CHANGE24HOURPCT'] = ((currentPrice[pair]['PRICE'] - currentPrice[pair]['OPEN24HOUR']) / currentPrice[pair]['OPEN24HOUR'] * 100).toFixed(2) + "%";
+        displayData(currentPrice[pair], from, tsym, fsym);
+        updateView(currentPrice[pair], from);
+    };
 
 
-     // fetch ETH
-     $.ajax({
-         url: 'https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD',
-         dataType: 'json',
-         contentType: 'application/json',
-         success: function (data) {
-             $('.eth').html("$ " + data.USD);
-         },
-         error: function (err) {
-             console.error('FETCH ETH ERR:', err);
-         }
-     });
+    var updateView = function(data, from) {
+        if (data.PRICE)
+            $('.' + from.toLowerCase()).html("$ " + data.PRICE);
+    };
 
-     //fetch BCH
-     $.ajax({
-         url: 'https://min-api.cryptocompare.com/data/price?fsym=BCH&tsyms=USD',
-         dataType: 'json',
-         contentType: 'application/json',
-         success: function (data) {
-             $('.bch').html("$ " + data.USD);
-         },
-         error: function (err) {
-             console.error('FETCH ETH ERR:', err);
-         }
-     });
+    var displayData = function (messageToDisplay, from, tsym, fsym) {
+        // var priceDirection = messageToDisplay.FLAGS;
+        // var fields = CCC.CURRENT.DISPLAY.FIELDS;
 
-     //fetch LTE
-     $.ajax({
-         url: 'https://min-api.cryptocompare.com/data/price?fsym=LTE&tsyms=USD',
-         dataType: 'json',
-         contentType: 'application/json',
-         success: function (data) {
-             $('.lte').html("$ " + data.USD);
-         },
-         error: function (err) {
-             console.error('FETCH ETH ERR:', err);
-         }
-     });
+        // for (var key in fields) {
+        //     if (messageToDisplay[key]) {
+        //         if (fields[key].Show) {
+        //             switch (fields[key].Filter) {
+        //                 case 'String':
+        //                     $('#' + key + '_' + from).text(messageToDisplay[key]);
+        //                     break;
+        //                 case 'Number':
+        //                     var symbol = fields[key].Symbol == 'TOSYMBOL' ? tsym : fsym;
+        //                     $('#' + key + '_' + from).text(CCC.convertValueToDisplay(symbol, messageToDisplay[key]))
+        //                     break;
+        //             }
+        //         }
+        //     }
+        // }
 
-     //fetch XRP
-     $.ajax({
-         url: 'https://min-api.cryptocompare.com/data/price?fsym=XRP&tsyms=USD',
-         dataType: 'json',
-         contentType: 'application/json',
-         success: function (data) {
-             $('.xrp').html("$ " + data.USD);
-         },
-         error: function (err) {
-             console.error('FETCH ETH ERR:', err);
-         }
-     });
-     
- };
-    
- setInterval(loadData, 30000);
- 
- var i = 0;
- 
+        // $('#PRICE_' + from).removeClass();
+        // if (priceDirection & 1) {
+        //     $('#PRICE_' + from).addClass("up");
+        // }
+        // else if (priceDirection & 2) {
+        //     $('#PRICE_' + from).addClass("down");
+        // }
 
- 
- var countDown = function(){
-     i++;
-     i = i % 300;
-     
-     $('.progress-bar').css('width', i/300 *100 + '%');
-     
-     setTimeout(countDown, 100);
+        // if (messageToDisplay['PRICE'] > messageToDisplay['OPEN24HOUR']) {
+        //     $('#CHANGE24HOURPCT_' + from).removeClass();
+        //     $('#CHANGE24HOURPCT_' + from).addClass("pct-up");
+        // }
+        // else if (messageToDisplay['PRICE'] < messageToDisplay['OPEN24HOUR']) {
+        //     $('#CHANGE24HOURPCT_' + from).removeClass();
+        //     $('#CHANGE24HOURPCT_' + from).addClass("pct-down");
+        // }
     };
     countDown();
     loadData();
