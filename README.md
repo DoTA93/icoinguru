@@ -1,2 +1,2 @@
-# bs-base
-git clone -b icoinguru --single-branch https://github.com/mortuz/bs-base.git icoinguru
+# iCoinGuru
+git clone https://github.com/idevia/icoinguru.git icoinguru
