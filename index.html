@@ -101,7 +101,7 @@
                             <h5 class="text-muted">FROM</h5> &nbsp; &nbsp;
                             <input type="text" class="form-control form1" aria-label="Text input with dropdown button">
                             <div class="input-group-append">
-                              <button class="btn btn-t d-from dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <button class="btn btn-t glow d-from dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <strong class="d-val1">USD</strong>
                               </button>
                               <div class="dropdown-menu smaller-dropdown">
@@ -118,7 +118,7 @@
                           <h5 class="to1 text-right text-muted" style="width: 55.92px">TO</h5> &nbsp; &nbsp;
                           <input type="text" class="form-control form1" aria-label="Text input with dropdown button">
                           <div class="input-group-append">
-                            <button class="btn btn-t d2-from dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-t glow d2-from dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <strong class="d-val2">USD</strong>
                             </button>
                             <div class="dropdown-menu smaller-dropdown">
@@ -201,7 +201,52 @@
       </div>
     </div>
 
-    <footer class="footer fixed-bottom bg-white">
+    <section>
+      <div class="container-fluid">
+      <div class="col-8 offset-2">
+
+      <select class="custom-select custom-select-lg mb-3">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+
+        <canvas id="myChart" class="mb-5" style="height: 600px";>
+
+        </canvas>
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item active">
+              <a class="page-link" href="#">1H</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">1D</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">1W</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">1M</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">1Y</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">2Y</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">5Y</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+      </div>
+    </section>
+
+    <footer class="footer bg-white">
       <div class="container-fluid">
         <div class="row my-4">
           <div class="col-6 pl-5 text-muted">
@@ -216,7 +261,7 @@
         </div>
       </div>
     </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

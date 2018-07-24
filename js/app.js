@@ -44,6 +44,12 @@
         // console.log($(this).html())
     });
 
+    $('.d3-from').next().on('click', 'a', function () {
+        // $drop = $(this).next();
+        $('.d-val3').html($(this).html());
+        // console.log($(this).html())
+    });
+
     $.ajax({
         url: 'https://free.currencyconverterapi.com/api/v6/currencies',
         dataType: 'json',
@@ -141,5 +147,36 @@
     };
     countDown();
     loadData();
+
+    var coinchart =function(){
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My First dataset",
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: '#fc6e51',
+                    data: [0, 10, 5, 2, 20, 30, 45],
+                    fill: false,
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                legend: {
+                    display: false,
+                }
+                // responsive: true,
+            }
+        });
+
+    }
+
+    coinchart();
     
 })(jQuery);
