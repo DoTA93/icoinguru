@@ -1,2 +1,2 @@
 # iCoinGuru
-git clone https://github.com/mortuz/icoinguru.git icoinguru
+git clone https://github.com/idevia/icoinguru.git icoinguru
