@@ -22,10 +22,10 @@
         }
         
 
-        var time = hours + ":" + minutes + ":" + seconds + " " + suffix;
+        var time = '<span style="width: 54px; display:inline-block">' + hours + ":" + minutes + ":" + seconds + "</span> " + suffix;
         var el = document.getElementById('time');
         el.innerHTML = time;
-        $('.year').html(currentTime.getFullYear())
+        $('.year').html(currentTime.getFullYear());
 
     }
     // getCurrentTime();

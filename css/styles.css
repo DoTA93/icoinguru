@@ -8,9 +8,7 @@ body{
     border: 0;
     border-bottom: 1px solid rgba(0,0,0,.1);
 }
-.min-full-height{
-    min-height: calc(100vh - 201px);
-}
+
 
 .visit-idevia{
     top: 0;
@@ -54,7 +52,8 @@ body{
 }
 
 .component {
-    width: 25rem;
+    max-width: 25rem;
+    width: 100%;
     /* height: 15rem; */
     margin: auto;
 }
@@ -92,4 +91,25 @@ body{
 
 a:hover {
   text-decoration: none;
+}
+.max-width-25 {
+    width: 100%;
+    max-width: 25rem;
+}
+@media (min-width: 768px) {
+    .min-full-height{
+        min-height: calc(100vh - 201px);
+    }
+}
+@media screen and (max-width: 767px) {
+    #topNav {
+        padding: 0;
+    }
+    .header {
+        background: #212331;
+        color: #fff;
+    }
+    .min-full-height {
+        margin-top: 20px;
+    }
 }

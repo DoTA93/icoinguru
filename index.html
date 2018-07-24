@@ -17,28 +17,31 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-xl navbar-light bg-backgrd position-relative">
+  <nav class="navbar navbar-expand-md navbar-light bg-backgrd position-relative" id="topNav">
 
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto pl-4">
         <li class="nav-item">
           <a class="nav-link  text-white" href="tel:+919791107278">
-            <small><i class="fa fa-phone text-icon1" aria-hidden="true"></i> (+91) 979-110-7278</small>
-            <span class="sr-only">(current)</span>
+            <small>
+              <i class="fa fa-phone text-icon1" aria-hidden="true"></i> (+91) 979-110-7278</small>
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link  text-white" href="mailto:team@idevia.in">
-            <small><i class="fa fa-envelope-o text-icon1" aria-hidden="true"></i> team@idevia.in</small>
+            <small>
+              <i class="fa fa-envelope-o text-icon1" aria-hidden="true"></i> team@idevia.in</small>
           </a>
         </li>
 
       </ul>
-      <button type="button" class="visit-idevia btn btn-visit my-2 my-lg-0 position-absolute rounded-0">
-        <a target="_blank" href="http://www.idevia.in" class="text-white"><i class="fa fa-globe" aria-hidden="true"></i> &nbsp; Visit iDevia &nbsp;
-        <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+      <button type="button" class="visit-idevia btn btn-visit position-absolute rounded-0">
+        <a target="_blank" href="http://www.idevia.in" class="text-white">
+          <i class="fa fa-globe" aria-hidden="true"></i> &nbsp; Visit iDevia &nbsp;
+          <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+        </a>
       </button>
     </div>
   </nav>
@@ -46,20 +49,33 @@
   <header class="header py-4">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-4 pl-5 font-weight-bold" id="time">
-
+        <div class="col-4 pl-5 font-weight-bold">
+          <div id="time" class="d-none d-md-block"></div>
         </div>
         <div class="col-4 text-center">
           <strong>
             <i class="fa fa-universal-access" aria-hidden="true"></i> iCOINGURU</strong>
         </div>
         <div class="col-4 text-right pr-5">
-          <a target="_blank" href="https://www.behance.net/iDevia" class="text-dark"><i class="fa fa-behance" aria-hidden="true"></i></a> &nbsp;
-          <a target="_blank" href="https://www.facebook.com/idevia.in/" class="text-dark"><i class="fa fa-facebook" aria-hidden="true"></i></a> &nbsp;
-          <a target="_blank" href="https://www.linkedin.com/company/idevia/" class="text-dark"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-          &nbsp;
-          <a target="_blank" href="https://dribbble.com/dhar93" class="text-dark"><i class="fa fa-dribbble" aria-hidden="true"></i></a> &nbsp;
-          <a target="_blank" href="https://twitter.com/idevia_in" class="text-dark"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <div class="icons d-none d-md-block">
+            <a target="_blank" href="https://www.behance.net/iDevia" class="text-dark">
+              <i class="fa fa-behance" aria-hidden="true"></i>
+            </a> &nbsp;
+            <a target="_blank" href="https://www.facebook.com/idevia.in/" class="text-dark">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a> &nbsp;
+            <a target="_blank" href="https://www.linkedin.com/company/idevia/" class="text-dark">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            &nbsp;
+            <a target="_blank" href="https://dribbble.com/dhar93" class="text-dark">
+              <i class="fa fa-dribbble" aria-hidden="true"></i>
+            </a> &nbsp;
+            <a target="_blank" href="https://twitter.com/idevia_in" class="text-dark">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -67,10 +83,10 @@
 
 
   <div class="container-fluid">
-    <div class="row no-gutters justify-content-md-center">
+    <div class="row justify-content-md-center">
       <div class="col-md-6">
         <section>
-          <table class="min-full-height" style="width: 100%;">
+          <table class="min-full-height w-100">
             <tbody>
               <tr>
 
@@ -78,7 +94,7 @@
 
                   <div class="component">
                     <h4>CURRENCY CONVERTOR</h4>
-                    <div class="card mt-4" style="width: 25rem;">
+                    <div class="card mt-4 max-width-25">
                       <div class="card-body text-center">
                         <p>
                           <div class="input-group">
@@ -89,10 +105,10 @@
                                 <strong class="d-val1">USD</strong>
                               </button>
                               <div class="dropdown-menu smaller-dropdown">
-                                <a target="_blank" class="dropdown-item" href="#">EUR</a>
-                                <a target="_blank" class="dropdown-item" href="#">PND</a>
-                                <a target="_blank" class="dropdown-item" href="#">INR</a>
-                                <a target="_blank" class="dropdown-item" href="#">BTC</a>
+                                <a class="dropdown-item" href="#">EUR</a>
+                                <a class="dropdown-item" href="#">PND</a>
+                                <a class="dropdown-item" href="#">INR</a>
+                                <a class="dropdown-item" href="#">BTC</a>
                               </div>
                             </div>
                           </div>
@@ -106,10 +122,10 @@
                               <strong class="d-val2">USD</strong>
                             </button>
                             <div class="dropdown-menu smaller-dropdown">
-                              <a target="_blank" class="dropdown-item" href="#">EUR</a>
-                              <a target="_blank" class="dropdown-item" href="#">PND</a>
-                              <a target="_blank" class="dropdown-item" href="#">INR</a>
-                              <a target="_blank" class="dropdown-item" href="#">BTC</a>
+                              <a class="dropdown-item" href="#">EUR</a>
+                              <a class="dropdown-item" href="#">PND</a>
+                              <a class="dropdown-item" href="#">INR</a>
+                              <a class="dropdown-item" href="#">BTC</a>
                             </div>
                           </div>
                         </div>
@@ -142,11 +158,11 @@
                 <tr>
 
                   <td class="align-middle">
-                    <div class="progress mx-auto mb-3" style="height: 3px;width: 25rem;">
+                    <div class="progress mx-auto mb-3 max-width-25" style="height: 3px;">
                       <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="30"></div>
                     </div>
 
-                    <div class="trackers mx-auto" style="width: 25rem;">
+                    <div class="trackers mx-auto max-width-25">
                       <div class="alert alert-track d-flex justify-content-between align-items-center">
                         Bitcoin
                         <span class="badge price1 btc">0</span>
@@ -188,10 +204,14 @@
     <footer class="footer fixed-bottom bg-white">
       <div class="container-fluid">
         <div class="row my-4">
-          <div class="col-6 pl-5 text-muted"><small>@<span class="year"></span> iDevia Tech Pvt. Ltd.</small></div>
+          <div class="col-6 pl-5 text-muted">
+            <small>@
+              <span class="year"></span> iDevia Tech Pvt. Ltd.</small>
+          </div>
           <div class="col-6 text-right pr-5 text-muted">
             <small>Designed &amp; Developed by
-            <a target="_blank" class="idevia1" href="http://idevia.in">iDevia</a></small> 
+              <a target="_blank" class="idevia1" href="http://idevia.in">iDevia</a>
+            </small>
           </div>
         </div>
       </div>
