@@ -25,7 +25,7 @@
         var time = hours + ":" + minutes + ":" + seconds + " " + suffix;
         var el = document.getElementById('time');
         el.innerHTML = time;
-        
+        $('.year').html(currentTime.getFullYear())
 
     }
     // getCurrentTime();

@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700');
+
 body{
-    /* overflow: hidden; */
+    font-family: 'Poppins', sans-serif;
 }
 
 .header {
@@ -14,7 +16,7 @@ body{
     top: 0;
     right: 48px;
     padding: 15px 53px;
-    color: white;
+    
 }
 
 .btn-visit{
@@ -86,4 +88,8 @@ body{
 
 .progress-bar{
     background-color: #fc6e51;
+}
+
+a:hover {
+  text-decoration: none;
 }
