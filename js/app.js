@@ -22,7 +22,7 @@
         }
         
 
-        var time = '<span style="width: 54px; display:inline-block">' + hours + ":" + minutes + ":" + seconds + "</span> " + suffix;
+        var time = '<span style="width: 60px; display:inline-block">' + hours + ":" + minutes + ":" + seconds + "</span> " + suffix;
         var el = document.getElementById('time');
         el.innerHTML = time;
         $('.year').html(currentTime.getFullYear());
@@ -143,7 +143,7 @@
         // }
     };
 
-    var coinchart =function(){
+    // var coinchart =function(){
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
@@ -170,8 +170,44 @@
             }
         });
 
-    }
+    // }
 
-    coinchart();
+    // coinchart();
+
+    $('.js-coin').on('change', function() {
+        $this = $(this);
+        var value = $this.val();
+
+        var url = "https://min-api.cryptocompare.com/data/histoday?fsym="+ value +"&tsym=USD&limit=30";
+        fetchHistoryChart(url);
+    });
     
+    var history = {};
+    var fetchHistoryChart = function(url) {
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+                // console.log(data);
+                history.data = data.Data;
+                updateChart();
+            },
+            error: function (err) {
+                console.error('FETCH ETH ERR:', err);
+            }
+        });    
+    };
+
+    var updateChart = function() {
+        
+        chart.data.datasets[0].data = [];
+        chart.data.labels = [];
+        history.data.forEach(function(element) {
+            chart.data.datasets[0].data.push(element.close);
+            chart.data.labels.push(element.time);
+        });
+        // chart.data.datasets[0] = [];
+        chart.update();
+    }
 })(jQuery);
