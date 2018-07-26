@@ -81,6 +81,7 @@
     </div>
   </header>
 
+  <!-- <canvas id="dots"></canvas> -->
 
   <div class="container-fluid">
     <div class="row justify-content-md-center">
@@ -190,66 +191,80 @@
                 </tr>
               </tbody>
             </table>
-
-
           </section>
 
         </div>
+        
       </div>
 
-    <section>
+      <span class="scroll-down mx-auto"></span>
+
+    <section class="mb-5 pb-5">
       <div class="container-fluid">
-      <div class="col-8 offset-2">
+        <div class="row">
+        
+          
+            <div class="col-4 offset-2 mt-3 mb-5">
+              <strong>$</strong> <span class="coinvalue font-weight-bold">213324</span>
+            </div>
+            <div class="col-4 mt-3 mb-5">
+            
+              <select class="custom-select w-25 ml-auto d-block">
+                <option selected>bitcoin</option>
+                <option value="1">Ethereum</option>
+                <option value="2">Litecoin</option>
+                <option value="3">EOS</option>
+              </select>
+            
+            </div>
+          
+          
+          <div class="col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+            <canvas id="myChart" class="mb-3" style="height: 300px" ;>
+          
+            </canvas>
+          
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item active">
+                  <a class="page-link" href="#">1H</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">1D</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">1W</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">1M</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">1Y</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">2Y</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">5Y</a>
+                </li>
+              </ul>
+            </nav>
+          
+          </div>
 
-      <select class="custom-select custom-select-lg mb-3">
-        <option selected value="0">Bitcoin</option>
-        <option value="1">EOS</option>
-        <option value="2">Bitcoin Cash</option>
-        <option value="3">Ethereum</option>
-      </select>
-
-        <canvas id="myChart" class="mb-5" style="height: 600px";>
-
-        </canvas>
-
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-            <li class="page-item active">
-              <a class="page-link" href="#">1H</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">1D</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">1W</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">1M</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">1Y</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">2Y</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">5Y</a>
-            </li>
-          </ul>
-        </nav>
-
-      </div>
+        </div>
+      
       </div>
     </section>
 
     <footer class="footer bg-white">
       <div class="container-fluid">
         <div class="row my-4">
-          <div class="col-6 pl-5 text-muted">
+          <div class="col-md-6 text-muted">
             <small>@
               <span class="year"></span> iDevia Tech Pvt. Ltd.</small>
           </div>
-          <div class="col-6 text-right pr-5 text-muted">
+          <div class="col-md-6 text-md-right text-muted">
             <small>Designed &amp; Developed by
               <a target="_blank" class="idevia1" href="http://idevia.in">iDevia</a>
             </small>
@@ -263,6 +278,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/util-streamer.js"></script>
+    <script src="js/particle.js"></script>
     <script src="js/app.js"></script>
 </body>
 

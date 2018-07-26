@@ -45,7 +45,7 @@ body{
     /* bottom: 0; */
     /* width: 100%; */
     /* height: 60px; */
-    border-top: 1px solid rgba(0,0,0,.1);
+    /* border-top: 1px solid rgba(0,0,0,.1); */
 
 }
 
@@ -114,6 +114,9 @@ a:hover {
     .min-full-height {
         margin-top: 20px;
     }
+    .scroll-down{
+        display: none;
+    }
 }
 
 .form1:focus {
@@ -155,3 +158,72 @@ a:hover {
     font-weight: bold;
 }
 
+.scroll-down{
+    color: #212331;
+    display:block;
+    border:1px solid #212331;
+    margin-top:-3rem;
+    margin-bottom: 6rem;
+    height:2.8rem;
+    width:1.7rem;
+    border-radius:.9rem
+}
+.scroll-down::before{
+    content:"";
+    background: #fc6e51;
+    width:.15rem;
+    height:.7rem;
+    margin-left:.4rem;
+    margin-top:.1rem;
+    position:relative;
+    opacity:1;
+    top:.3rem;
+    left:.3rem;
+    display:block;
+    border-radius:.25rem;
+    -webkit-animation-duration:2s;
+    animation-duration:2s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both;
+    -webkit-animation-timing-function:cubic-bezier(0.19, 1, 0.22, 1);
+    animation-timing-function:cubic-bezier(0.19, 1, 0.22, 1);
+    -webkit-animation-name:scrollUpDown;
+    animation-name:scrollUpDown;
+    -webkit-animation-iteration-count:infinite;
+    animation-iteration-count:infinite
+}
+@-webkit-keyframes scrollUpDown{
+    0%,to{
+        height:.5rem;
+        margin-top:.2rem
+    }
+    25%,75%{
+        height:1.6rem;
+        margin-top:.2rem
+    }
+    50%{
+        height:.5rem;
+        margin-top:1.3rem
+    }
+}
+@keyframes scrollUpDown{
+    0%,to{
+        height:.5rem;
+        margin-top:.2rem
+    }
+    25%,75%{
+        height:1.6rem;
+        margin-top:.2rem
+    }
+    50%{
+        height:.5rem;
+        margin-top:1.3rem
+    }
+}
+
+/* #dots {
+  /* background: #232323; */
+  width: 100%;
+    position: absolute;
+    height: 100%;
+} */
