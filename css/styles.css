@@ -155,7 +155,7 @@ a:hover {
     background-color: #383942;
     color: #fc6e51;
     border-color: transparent;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .scroll-down{

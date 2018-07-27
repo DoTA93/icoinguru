@@ -151,12 +151,12 @@
 
             // The data for our dataset
             data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: [],
                 datasets: [{
                     label: "My First dataset",
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: '#fc6e51',
-                    data: [0, 10, 5, 2, 20, 30, 45],
+                    data: [],
                     fill: false,
                 }]
             },
@@ -172,17 +172,48 @@
 
     // }
 
-    // coinchart();
+    /*
+        HISTORY CHART SECTION
+    */ 
+    var history = {};
+    history.time = 7;
+    history.coin = 'BTC';
+    history.baseUrl = 'https://min-api.cryptocompare.com/data/histoday?fsym='
 
+    // get coin type
     $('.js-coin').on('change', function() {
         $this = $(this);
-        var value = $this.val();
+        $this.attr('disabled', true)
+        var coin = $this.val();
 
-        var url = "https://min-api.cryptocompare.com/data/histoday?fsym="+ value +"&tsym=USD&limit=30";
+        var url = generateCoinUrl(coin);
         fetchHistoryChart(url);
     });
+
+    // get time
+    $('.page-item').on('click', '.page-link', function (e) {
+        e.preventDefault();
+        $('.page-item').removeClass('active');
+        $(this).parent().addClass('active');
+        history.time = $(this).attr('data-time');
+        var url = generateTimeUrl(history.time);
+        fetchHistoryChart(url);
+    });
+
+    var generateCoinUrl = function(coin) {
+        history.coin = coin;
+        return history.baseUrl + coin + "&tsym=USD&limit=" + history.time;
+    }
+    var generateTimeUrl = function(time) {
+        history.time = time;
+        return history.baseUrl + history.coin + "&tsym=USD&limit=" + time;
+    }
+
+    var initData = function() {
+        var url = history.baseUrl + history.coin + "&tsym=USD&limit=" + history.time;
+        fetchHistoryChart(url);
+    }
     
-    var history = {};
     var fetchHistoryChart = function(url) {
         $.ajax({
             url: url,
@@ -191,23 +222,27 @@
             success: function (data) {
                 // console.log(data);
                 history.data = data.Data;
+                $('.js-coin').removeAttr('disabled');
                 updateChart();
             },
             error: function (err) {
                 console.error('FETCH ETH ERR:', err);
+                $('.js-coin').removeAttr('disabled');
             }
         });    
     };
 
-    var updateChart = function() {
-        
+    
+    var updateChart = function() {        
         chart.data.datasets[0].data = [];
         chart.data.labels = [];
         history.data.forEach(function(element) {
             chart.data.datasets[0].data.push(element.close);
             chart.data.labels.push(element.time);
         });
-        // chart.data.datasets[0] = [];
         chart.update();
     }
+    
+    initData();
+    
 })(jQuery);
