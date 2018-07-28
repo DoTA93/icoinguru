@@ -158,6 +158,12 @@ a:hover {
     /* font-weight: bold; */
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 .scroll-down{
     color: #212331;
     display:block;
@@ -219,4 +225,12 @@ a:hover {
         height:.5rem;
         margin-top:1.3rem
     }
+}
+
+.drop-search {
+    margin-left: 10px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    width: calc(100% - 20px);
+    margin-bottom: 6px;
 }

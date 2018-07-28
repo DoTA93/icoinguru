@@ -100,16 +100,17 @@
                         <p>
                           <div class="input-group">
                             <h5 class="text-muted">FROM</h5> &nbsp; &nbsp;
-                            <input type="text" class="form-control form1" aria-label="Text input with dropdown button">
+                            <input type="number" class="form-control form1 currency-input" id="js-input" aria-label="Text input with dropdown button">
                             <div class="input-group-append">
                               <button class="btn btn-t glow d-from dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <strong class="d-val1">USD</strong>
                               </button>
-                              <div class="dropdown-menu smaller-dropdown">
-                                <a class="dropdown-item" href="#">EUR</a>
+                              <div class="dropdown-menu smaller-dropdown js-currencies">
+                                <input type="text" placeholder="Search"  class="drop-search form-control">
+                                <!-- <a class="dropdown-item" href="#">EUR</a>
                                 <a class="dropdown-item" href="#">PND</a>
                                 <a class="dropdown-item" href="#">INR</a>
-                                <a class="dropdown-item" href="#">BTC</a>
+                                <a class="dropdown-item" href="#">BTC</a> -->
                               </div>
                             </div>
                           </div>
@@ -117,16 +118,17 @@
 
                         <div class="input-group">
                           <h5 class="to1 text-right text-muted" style="width: 55.92px">TO</h5> &nbsp; &nbsp;
-                          <input type="text" class="form-control form1" aria-label="Text input with dropdown button">
+                          <input type="number" class="form-control form1 currency-show" aria-label="Text input with dropdown button">
                           <div class="input-group-append">
                             <button class="btn btn-t glow d2-from dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <strong class="d-val2">USD</strong>
+                              <strong class="d-val2">INR</strong>
                             </button>
-                            <div class="dropdown-menu smaller-dropdown">
-                              <a class="dropdown-item" href="#">EUR</a>
+                            <div class="dropdown-menu smaller-dropdown js-currencies">
+                              <input type="text" placeholder="Search" class="drop-search form-control">
+                              <!-- <a class="dropdown-item" href="#">EUR</a>
                               <a class="dropdown-item" href="#">PND</a>
                               <a class="dropdown-item" href="#">INR</a>
-                              <a class="dropdown-item" href="#">BTC</a>
+                              <a class="dropdown-item" href="#">BTC</a> -->
                             </div>
                           </div>
                         </div>
@@ -204,12 +206,12 @@
         <div class="row">
         
           
-            <div class="col-4 offset-2 mt-3 mb-5">
-              <strong>$</strong> <span class="coinvalue font-weight-bold">213324</span>
+            <div class="col-md-4 offset-md-2 mt-3 mb-5">
+              <!-- <strong>$</strong> <span class="coinvalue font-weight-bold">213324</span> -->
             </div>
-            <div class="col-4 mt-3 mb-5">
+            <div class="col-md-5 mt-3 mb-5">
             
-              <select class="custom-select w-25 ml-auto d-block js-coin">
+              <select class="custom-select w-50 ml-auto d-block js-coin">
                 <option selected value="BTC">Bitcoin</option>
                 <option value="ETH">Ethereum</option>
                 <option value="XRP">XRP</option>
@@ -219,7 +221,7 @@
             </div>
           
           
-          <div class="col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+          <div class="col-md-10 offset-md-1">
             <canvas id="myChart" class="mb-3" style="height: 300px" ;>
           
             </canvas>

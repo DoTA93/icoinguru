@@ -35,14 +35,16 @@
     $('.d-from').next().on('click', 'a', function(e){
         e.preventDefault();
         // $drop = $(this).next();
-        $('.d-val1').html($(this).html());
+        $('.d-val1').html($(this).attr('data-code'));
+        convertCurrency();
         // console.log($(this).html())
     });
 
     $('.d2-from').next().on('click', 'a', function (e) {
         e.preventDefault();
         // $drop = $(this).next();
-        $('.d-val2').html($(this).html());
+        $('.d-val2').html($(this).attr('data-code'));
+        convertCurrency();
         // console.log($(this).html())
     });
 
@@ -244,5 +246,112 @@
     }
     
     initData();
+
+    // fetch currency listv
+    var currentcies = [];
+    var fetchCurrencyList = function () {
+        $.ajax({
+            url: '../data/currencies.json',
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+                Object.keys(data.results).map(function (key) {
+                    currentcies.push(data.results[key]);
+                    // console.log('key', data.results[key]);
+                });
+                // currentcies = currentcies[0];
+                populateDropdown(currentcies);
+            },
+            error: function (err) {
+                console.error('FETCH ETH ERR:', err);
+            }
+        });
+    };
+
+    var populateDropdown = function(data, $elem = null) {
+        var html = '';
+        var i = 0;
+
+        // console.log('data', data);
+        data.forEach(function(currency) {
+            html += `
+                <a class="dropdown-item ${i > 5 ? 'd-none' : ''}" href="#" data-code="${currency.id}">${currency.currencyName} <span class="text-muted">(${currency.id})</span></a>
+            `;
+            i++;
+        });
+        if (!$elem) {
+            $('.js-currencies').find('a').remove();
+            $('.js-currencies').append(html);
+        }
+        else {
+            $elem.append(html).find('a').remove();
+            $elem.append(html);
+        }
+    };
+
+    fetchCurrencyList();
+
+    $('.drop-search').on('keyup', function(e) {
+        var search = $(this).val();
+        var currencyArray = [];
+        currentcies.filter(function (currency) {
+            // console.log(currency.id.indexOf())
+            var cur = '';
+            if (currency.id.indexOf(search.toUpperCase()) > -1 || currency.currencyName.indexOf(search.toUpperCase()) > -1) {
+                // console.log(currency);
+                currencyArray.push(currency);
+            }
+        });
+        
+        populateDropdown(currencyArray, $(this).parent());
+
+    });
+
+    var filterCurrency = function() {
+        console.log(this)
+    }
+
+    var input;
+    // detect change of  drop1, drop2 and from
+    $('.currency-input').on('keyup', function() {
+        input = $(this).val();
+        convertCurrency();
+    });
+    // $('.d-val1, .d-val2').on('change', function() {
+    //     convertCurrency();
+    // });
+
+    var convertCurrency = function() {
+        var from = $('.d-val1').html().toUpperCase();
+        var to = $('.d-val2').html().toUpperCase();
+
+        // console.log(input)
+        var conversionIdentifier = from + '_' + to;
+
+        if (!input) return;
+
+        $.ajax({
+            url: 'http://free.currencyconverterapi.com/api/v6/convert?q=' + conversionIdentifier + '&compact=y',
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+                var value = data[conversionIdentifier];
+                console.log(value);
+                $('.currency-show').val(value.val * input);
+            },
+            error: function (err) {
+                console.error('FETCH ETH ERR:', err);
+            }
+        });
+    }
+
+
+    // extended functions
+    // var oldHtml = $.fn.html;
+    // $.fn.html = function () {
+    //     var ret = oldHtml.apply(this, arguments);
+    //     this.trigger("change");
+    //     return ret;
+    // };
     
 })(jQuery);
