@@ -239,8 +239,9 @@
         chart.data.datasets[0].data = [];
         chart.data.labels = [];
         history.data.forEach(function(element) {
+            var date = new Date(element.time * 1000);
             chart.data.datasets[0].data.push(element.close);
-            chart.data.labels.push(element.time);
+            chart.data.labels.push(date.getDay() + '/' + (parseInt(date.getMonth())+1) + '/' + date.getFullYear());
         });
         chart.update();
     }
@@ -307,8 +308,38 @@
 
     });
 
-    var filterCurrency = function() {
-        console.log(this)
+    var crypto = [];
+    var fetchAllCrypto = function() {
+        $.ajax({
+            url: '../data/crypto.json',
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+                // var value = data[conversionIdentifier];
+                console.log(data);
+                var html = '';
+                data.data.forEach(function(c) {
+                    html += `<option value="${c.symbol}">${c.name}</option>`;
+                });
+
+                $('.js-coin').html(html);
+            },
+            error: function (err) {
+                console.error('FETCH ETH ERR:', err);
+            }
+        });
+    }
+    fetchAllCrypto();
+    var populateChartSelectBox = function() {
+        currentcies.forEach(function (currency) {
+            html += `
+                <option value="ETH">${currency.currencyName}</option>
+            `;
+            html += `
+                <a class="dropdown-item ${i > 5 ? 'd-none' : ''}" href="#" data-code="${currency.id}">${currency.currencyName} <span class="text-muted">(${currency.id})</span></a>
+            `;
+            i++;
+        });
     }
 
     var input;
