@@ -155,7 +155,7 @@
             data: {
                 labels: [],
                 datasets: [{
-                    label: "My First dataset",
+                    label: "$",
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: '#fc6e51',
                     data: [],
@@ -241,7 +241,8 @@
         history.data.forEach(function(element) {
             var date = new Date(element.time * 1000);
             chart.data.datasets[0].data.push(element.close);
-            chart.data.labels.push(date.getDay() + '/' + (parseInt(date.getMonth())+1) + '/' + date.getFullYear());
+            chart.data.labels.push(date.getDate() + '/' + (parseInt(date.getMonth())+1) + '/' + date.getFullYear());
+            // chart.data.labels.push(new Date(element.time * 1000)());
         });
         chart.update();
     }

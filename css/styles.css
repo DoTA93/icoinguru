@@ -198,6 +198,11 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-animation-iteration-count:infinite;
     animation-iteration-count:infinite
 }
+@media (max-width: 767px) {
+    .scroll-down {
+        display: none;
+    }
+}
 @-webkit-keyframes scrollUpDown{
     0%,to{
         height:.5rem;
