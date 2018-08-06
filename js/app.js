@@ -363,7 +363,7 @@
         if (!input) return;
 
         $.ajax({
-            url: 'http://free.currencyconverterapi.com/api/v6/convert?q=' + conversionIdentifier + '&compact=y',
+            url: 'https://free.currencyconverterapi.com/api/v6/convert?q=' + conversionIdentifier + '&compact=y',
             dataType: 'json',
             contentType: 'application/json',
             success: function (data) {
