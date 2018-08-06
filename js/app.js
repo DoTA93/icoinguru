@@ -253,7 +253,7 @@
     var currentcies = [];
     var fetchCurrencyList = function () {
         $.ajax({
-            url: '../data/currencies.json',
+            url: '/icoinguru/data/currencies.json',
             dataType: 'json',
             contentType: 'application/json',
             success: function (data) {
@@ -312,7 +312,7 @@
     var crypto = [];
     var fetchAllCrypto = function() {
         $.ajax({
-            url: '../data/crypto.json',
+            url: '/icoinguru/data/crypto.json',
             dataType: 'json',
             contentType: 'application/json',
             success: function (data) {
